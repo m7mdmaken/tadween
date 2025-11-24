@@ -1,0 +1,40 @@
+
+flutter_native_splash:
+#   # Background color
+  color: "#000000"
+
+  # Splash image (center)
+  image: assets/imgs/logo.png
+
+  # Branding image (bottom)
+  branding: assets/imgs/branding.png
+
+#                         #=====optional=====#
+#  #branding_bottom_padding: 24
+#  #branding_mode: bottom
+#   # can use bottom, bottomRight, bottomLeft
+#                         #===================#
+  
+#  # or use background_image insted of image + branding + color
+#  # the image will be stretch to the size of the app
+
+#   # background_image: assets/images/splash_background.png
+  
+#                         #===================#
+#   # Dark mode support
+#   # color_dark: "#042a49"
+#   # image_dark: assets/images/splash_logo_dark.png
+#   # branding_dark: assets/images/branding_dark.png
+#      #===================================================================#
+
+  # Android 12+ settings
+  android_12:
+    image: assets/imgs/logo.png
+    branding: assets/imgs/branding.png
+    icon_background_color: "#000000"
+    #color: "#000000"
+    image_dark: assets/imgs/logo.png
+     #icon_background_color_dark: "#042a49"
+    # color_dark: "#042a49"
+  # Platforms
+  android: true
