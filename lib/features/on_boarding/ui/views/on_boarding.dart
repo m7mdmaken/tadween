@@ -1,11 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:tadween/core/constants/constants.dart';
-import 'package:tadween/core/helpers/extentions.dart';
-import 'package:tadween/core/helpers/shared_preferences_helper.dart';
-import 'package:tadween/core/routing/routes_consts.dart';
-import 'package:tadween/core/widgets/app_text_button.dart';
-import 'package:tadween/features/on_boarding/ui/widgets/onboarding_page_view.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/helpers/extentions.dart';
+import '../../../../core/helpers/shared_preferences_helper.dart';
+import '../../../../core/routing/routes_consts.dart';
+import '../../../../core/widgets/app_text_button.dart';
+import '../widgets/onboarding_page_view.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -69,7 +69,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         key: kOnBoardingKey,
                         value: true,
                       );
-                      context.pushReplacementNamed(RoutesConsts.homeView);
+                      context.pushReplacementNamed(RoutesConsts.notesView);
                     },
                   ),
                 ),

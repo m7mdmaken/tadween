@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:tadween/core/theme/assets.gen.dart';
-import 'package:tadween/features/on_boarding/ui/widgets/page_view_item.dart';
+import '../../../../core/theme/assets.gen.dart';
+import 'page_view_item.dart';
 
 class OnboardingPageView extends StatelessWidget {
   const OnboardingPageView({super.key, required this.pageController});
