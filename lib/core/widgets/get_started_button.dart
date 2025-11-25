@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tadween/core/theme/color_manager.dart';
+
+import '../theme/color_manager.dart';
 
 class GetStartedButton extends StatelessWidget {
   final String text;

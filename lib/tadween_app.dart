@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadween/core/constants/constants.dart';
-import 'package:tadween/core/helpers/shared_preferences_helper.dart';
-import 'package:tadween/core/routing/app_router.dart';
-import 'package:tadween/core/routing/routes_consts.dart';
-import 'package:tadween/core/theme/color_manager.dart';
+import 'core/constants/constants.dart';
+import 'core/helpers/shared_preferences_helper.dart';
+import 'core/routing/app_router.dart';
+import 'core/routing/routes_consts.dart';
+import 'core/theme/color_manager.dart';
 
 class Tadween extends StatelessWidget {
   const Tadween({super.key, required this.appRouter});
@@ -16,7 +16,7 @@ class Tadween extends StatelessWidget {
     final bool seenOnboarding =
         SharedPrefsHelper.getData(key: kOnBoardingKey) ?? false;
     if (seenOnboarding) {
-      initialRouteValue = RoutesConsts.homeView;
+      initialRouteValue = RoutesConsts.notesView;
     } else {
       initialRouteValue = RoutesConsts.onBoardingView;
     }
@@ -28,8 +28,8 @@ class Tadween extends StatelessWidget {
         onGenerateRoute: appRouter.onGenerateRoute,
         initialRoute: initialRouteValue,
         debugShowCheckedModeBanner: false,
-        darkTheme: ColorManager.darkTheme(),
-        theme: ColorManager.lightTheme(),
+        theme: ColorManager.darkTheme(),
+        //  theme: ColorManager.lightTheme(),
       ),
     );
   }
