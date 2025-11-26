@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:8670265835077875909",
-      "lastPropertyId": "5:4167106417597252623",
+      "lastPropertyId": "6:1186615201072275347",
       "name": "NoteEntity",
       "properties": [
         {
@@ -33,12 +33,41 @@
           "id": "5:4167106417597252623",
           "name": "color",
           "type": 6
+        },
+        {
+          "id": "6:1186615201072275347",
+          "name": "categoryId",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:148603666884733238",
+      "lastPropertyId": "3:5779279869173763551",
+      "name": "CategoryEntity",
+      "properties": [
+        {
+          "id": "1:6698199857899115312",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3294954880892091696",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:5779279869173763551",
+          "name": "date",
+          "type": 9
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:8670265835077875909",
+  "lastEntityId": "2:148603666884733238",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",

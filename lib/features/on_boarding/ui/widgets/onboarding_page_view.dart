@@ -8,7 +8,7 @@ class OnboardingPageView extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    // final localizations = AppLocalizations.of(context)!;
+    
 
     return PageView(
       controller: pageController,

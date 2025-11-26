@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'color_manager.dart';
 import 'font_weight.dart';
 
-/// App-wide text styles used across the Tadween app.
-/// Font sizes use flutter_screenutil for responsiveness.
+
+
 class AppTextStyles {
   static TextStyle headline = TextStyle(
     fontSize: 24.sp,

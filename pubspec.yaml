@@ -67,6 +67,7 @@ dependencies:
   objectbox_flutter_libs: any
   path: ^1.9.1
   path_provider: ^2.1.5
+  font_awesome_flutter: ^10.12.0
   
   
 

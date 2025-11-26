@@ -7,6 +7,7 @@ class NoteEntity {
   String? subTitle;
   String? date;
   int? color;
+  int? categoryId;
 
   NoteEntity({
     this.id = 0,
@@ -14,5 +15,6 @@ class NoteEntity {
     required this.subTitle,
     required this.date,
     required this.color,
+    this.categoryId,
   });
 }

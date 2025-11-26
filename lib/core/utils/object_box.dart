@@ -1,14 +1,17 @@
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import '../../features/home/data/models/note_entity.dart';
+import '../../features/home/data/models/category_entity.dart';
 import '../../objectbox.g.dart';
 
 class ObjectBoxService {
   late final Store _store;
   late final Box<NoteEntity> _noteBox;
+  late final Box<CategoryEntity> _categoryBox;
 
   ObjectBoxService._create(this._store) {
     _noteBox = Box<NoteEntity>(_store);
+    _categoryBox = Box<CategoryEntity>(_store);
   }
 
   static Future<ObjectBoxService> create() async {
@@ -17,29 +20,42 @@ class ObjectBoxService {
     return ObjectBoxService._create(store);
   }
 
-  // CRUD Operations
+  
 
-  // Create or Update
+  
   int saveNote(NoteEntity note) {
-    return _noteBox.put(note); // Returns the ID
+    return _noteBox.put(note); 
   }
 
-  // Read all
+  
   List<NoteEntity> getAllNotes() {
     return _noteBox.getAll();
   }
 
-  // Read one
+  
   NoteEntity? getNote(int id) {
     return _noteBox.get(id);
   }
 
-  // Delete
+  
   bool deleteNote(int id) {
     return _noteBox.remove(id);
   }
 
-  // Query examples
+  
+  List<NoteEntity> getNotesByCategory(int categoryId) {
+    return (_noteBox.query(NoteEntity_.categoryId.equals(categoryId)).build())
+        .find();
+  }
+
+  Stream<List<NoteEntity>> watchNotesByCategory(int categoryId) {
+    return _noteBox
+        .query(NoteEntity_.categoryId.equals(categoryId))
+        .watch(triggerImmediately: true)
+        .map((q) => q.find());
+  }
+
+  
   List<NoteEntity> searchNotes(String query) {
     return (_noteBox
             .query(
@@ -50,19 +66,30 @@ class ObjectBoxService {
         .find();
   }
 
-  // List<NoteEntity> getNotesOrderedByDate() {
-  //   return (_noteBox.query()
-  //         ..order(NoteEntity_.createdAt, flags: Order.descending))
-  //       .build()
-  //       .find();
-  // }
-
-  // Stream for real-time updates
+  
   Stream<List<NoteEntity>> watchAllNotes() {
     return _noteBox
         .query()
         .watch(triggerImmediately: true)
         .map((query) => query.find());
+  }
+
+  
+
+  int saveCategory(CategoryEntity category) {
+    return _categoryBox.put(category);
+  }
+
+  List<CategoryEntity> getAllCategories() {
+    return _categoryBox.getAll();
+  }
+
+  CategoryEntity? getCategory(int id) {
+    return _categoryBox.get(id);
+  }
+
+  bool deleteCategory(int id) {
+    return _categoryBox.remove(id);
   }
 
   void close() {
