@@ -1,33 +1,33 @@
-// color_manager.dart
+
 import 'package:flutter/material.dart';
 
-/// ColorManager - central palette & theme helpers for Tadween app
+
 class ColorManager {
-  // Primary (blue) family
+  
   static const Color primaryBlue = Color(0xFF407BFF);
   static const Color primaryBlueDark = Color(0xFF2B5BCC);
   static const Color primaryBlueLight = Color(0xFF6DA0FF);
 
-  // Neutral / Text colors
-  static const Color darkText = Color(0xFF263238); // from SVG
-  static const Color lightGray = Color(0xFFBFBFBF); // from SVG
+  
+  static const Color darkText = Color(0xFF263238); 
+  static const Color lightGray = Color(0xFFBFBFBF); 
 
-  // Background palette
-  static const Color scaffoldBg = Color(0xFFF8FAFF); // soft bluish white
+  
+  static const Color scaffoldBg = Color(0xFFF8FAFF); 
   static const Color cardBg = Colors.white;
   static const Color subtleBg = Color(0xFFF2F4F7);
 
-  // Functional
+  
   static const Color success = Color(0xFF4CAF50);
   static const Color danger = Color(0xFFE53935);
 
-  // Muted / disabled
-  static const Color disabled = Color(0xFFCBD5E1); // light bluish-gray
+  
+  static const Color disabled = Color(0xFFCBD5E1); 
 
-  // Icons
+  
   static const Color iconColor = primaryBlueDark;
 
-  // MaterialColor generator for primary swatch (useful for ThemeData)
+  
   static final MaterialColor primarySwatch =
       MaterialColor(primaryBlue.toARGB32(), <int, Color>{
         50: primaryBlueLight,
@@ -42,7 +42,7 @@ class ColorManager {
         900: primaryBlueDark,
       });
 
-  /// Light theme ready to use
+  
   static ThemeData lightTheme() {
     return ThemeData(
       brightness: Brightness.light,
@@ -75,7 +75,7 @@ class ColorManager {
     );
   }
 
-  /// Dark theme (optional)
+  
   static ThemeData darkTheme() {
     return ThemeData(
       brightness: Brightness.dark,

@@ -29,7 +29,7 @@ class Tadween extends StatelessWidget {
         initialRoute: initialRouteValue,
         debugShowCheckedModeBanner: false,
         theme: ColorManager.darkTheme(),
-        //  theme: ColorManager.lightTheme(),
+        
       ),
     );
   }

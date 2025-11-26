@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadween/features/home/logic/add_note_cubit/add_note_cubit.dart';
 import 'package:tadween/features/home/logic/notes_cubit/notes_cubit.dart';
 import 'routes_consts.dart';
-import '../../features/home/ui/views/notes_view.dart';
+import '../../features/home/ui/views/home_view.dart';
 import '../../features/on_boarding/ui/views/on_boarding.dart';
 
 class AppRouter {
@@ -27,7 +27,7 @@ class AppRouter {
           BlocProvider(create: (context) => AddNoteCubit()),
           BlocProvider(create: (context) => NotesCubit()..fetchAllNotes()),
         ],
-        child: const NotesView(),
+        child: const HomeView(),
       ),
     );
   }
@@ -39,7 +39,7 @@ class AppRouter {
           BlocProvider(create: (context) => AddNoteCubit()),
           BlocProvider(create: (context) => NotesCubit()..fetchAllNotes()),
         ],
-        child: const NotesView(),
+        child: const HomeView(),
       ),
     );
   }

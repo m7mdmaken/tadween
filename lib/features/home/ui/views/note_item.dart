@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tadween/features/home/ui/widgets/leading_circle.dart';
+import 'package:tadween/features/home/ui/widgets/note_content.dart';
 import '../../data/models/note_entity.dart';
 import '../../logic/notes_cubit/notes_cubit.dart';
+import '../views/read_note_view.dart';
 import '../widgets/edit_note_view.dart';
-import '../../../../main.dart';
+
 import '../../../../core/theme/text_styles.dart';
 import '../../../../core/theme/color_manager.dart';
 import '../../../../core/helpers/extentions.dart';
+import '../widgets/home_styles.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key, required this.note});
 
   final NoteEntity note;
+
   @override
   Widget build(BuildContext context) {
+    final int rawColor = note.color ?? ColorManager.cardBg.toARGB32();
+    final Color bgColor = Color(rawColor);
     return GestureDetector(
       onTap: () {
+        context.push(
+          BlocProvider.value(
+            value: BlocProvider.of<NotesCubit>(context),
+            child: ReadNoteView(note: note),
+          ),
+        );
+      },
+      onLongPress: () {
         context.push(
           BlocProvider.value(
             value: BlocProvider.of<NotesCubit>(context),
@@ -25,57 +40,36 @@ class NoteItem extends StatelessWidget {
         );
       },
       child: Container(
-        decoration: BoxDecoration(
-          color: Color(note.color ?? ColorManager.cardBg.toARGB32()),
-          borderRadius: BorderRadius.circular(16.r),
-        ),
-        padding: EdgeInsets.only(left: 16.w, top: 24.h, bottom: 24.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+        decoration: cardDecoration(bgColor),
+        padding: EdgeInsets.all(12.w),
+        child: Row(
           children: [
-            ListTile(
-              title: Text(
-                note.title ?? '',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.headline.copyWith(
-                  fontSize: 26.sp,
-                  color: ColorManager.darkText,
-                ),
-              ),
-              subtitle: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.h),
-                child: Text(
-                  note.subTitle ?? '',
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.body.copyWith(
-                    fontSize: 18.sp,
-                    color: ColorManager.darkText.withValues(alpha: 0.54),
+            LeadingCircle(note: note),
+            SizedBox(width: 12.w),
+            Expanded(child: NoteContent(note: note)),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  note.date ?? '',
+                  style: AppTextStyles.caption.copyWith(
+                    color: const Color.fromARGB(255, 0, 0, 0),
                   ),
                 ),
-              ),
-              trailing: IconButton(
-                onPressed: () {
-                  objectBox.deleteNote(note.id);
-
-                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                },
-                icon: Icon(
-                  Icons.delete,
-                  color: ColorManager.darkText,
-                  size: 30.sp,
+                IconButton(
+                  onPressed: () async {
+                    await BlocProvider.of<NotesCubit>(
+                      context,
+                    ).deleteNote(note.id);
+                  },
+                  icon: Icon(
+                    Icons.delete_outline,
+                    color: ColorManager.darkText,
+                    size: 26.sp,
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Text(
-                note.date ?? '',
-                style: AppTextStyles.caption.copyWith(
-                  color: ColorManager.darkText.withValues(alpha: 0.54),
-                ),
-              ),
+              ],
             ),
           ],
         ),

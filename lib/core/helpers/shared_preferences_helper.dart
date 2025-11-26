@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// A comprehensive helper class for managing both regular and secure cached data
-///
-/// This class provides a unified interface for storing and retrieving various
-/// data types using both SharedPreferences (for non-sensitive data) and
-/// FlutterSecureStorage (for sensitive data like tokens and credentials).
+
+
+
+
+
 class SharedPrefsHelper {
-  // Private constructor to prevent instantiation
+  
   SharedPrefsHelper._();
 
   static SharedPreferences? _prefs;
   static bool _isInitialized = false;
 
-  /// Secure storage instance with platform-specific configurations
+  
   static const FlutterSecureStorage _secureStorage = FlutterSecureStorage(
     aOptions: AndroidOptions(
       encryptedSharedPreferences: true,
@@ -39,15 +39,15 @@ class SharedPrefsHelper {
     ),
   );
 
-  /// Initialize both SharedPreferences and SecureStorage
-  ///
-  /// This method must be called before using any other methods in this class.
-  /// Typically called in main() function during app initialization.
+  
+  
+  
+  
   static Future<void> init() async {
     try {
       _prefs = await SharedPreferences.getInstance();
 
-      // Test secure storage availability
+      
       await _secureStorage.read(key: '_test_key');
 
       _isInitialized = true;
@@ -57,16 +57,16 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Check if the helper is initialized
+  
   static bool get isInitialized => _isInitialized;
 
-  // ==================== REGULAR SHARED PREFERENCES ====================
+  
 
-  /// Save data to regular SharedPreferences with type validation
-  ///
-  /// Supports String, int, bool, double, and List<-String-> types.
-  /// Returns true if the operation was successful.
-  /// Use this for non-sensitive data like user preferences, app settings, etc.
+  
+  
+  
+  
+  
   static Future<bool> saveData({
     required String key,
     required dynamic value,
@@ -110,57 +110,57 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Get data from regular SharedPreferences
-  ///
-  /// Returns the value associated with the key, or null if not found.
+  
+  
+  
   static dynamic getData({required String key}) {
     _ensureInitialized();
     return _prefs!.get(key);
   }
 
-  /// Get string value from SharedPreferences
+  
   static String? getString({required String key}) {
     _ensureInitialized();
     return _prefs!.getString(key);
   }
 
-  /// Get integer value from SharedPreferences
+  
   static int? getInt({required String key}) {
     _ensureInitialized();
     return _prefs!.getInt(key);
   }
 
-  /// Get boolean value from SharedPreferences
+  
   static bool? getBool({required String key}) {
     _ensureInitialized();
     return _prefs!.getBool(key);
   }
 
-  /// Get double value from SharedPreferences
+  
   static double? getDouble({required String key}) {
     _ensureInitialized();
     return _prefs!.getDouble(key);
   }
 
-  /// Get string list value from SharedPreferences
+  
   static List<String>? getStringList({required String key}) {
     _ensureInitialized();
     return _prefs!.getStringList(key);
   }
 
-  /// Check if a key exists in SharedPreferences
+  
   static bool containsKey({required String key}) {
     _ensureInitialized();
     return _prefs!.containsKey(key);
   }
 
-  /// Get all keys from SharedPreferences
+  
   static Set<String> getAllKeys() {
     _ensureInitialized();
     return _prefs!.getKeys();
   }
 
-  /// Remove a specific key from SharedPreferences
+  
   static Future<bool> removeData({required String key}) async {
     _ensureInitialized();
     try {
@@ -177,7 +177,7 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Clear all data from SharedPreferences
+  
   static Future<bool> clearAllData() async {
     _ensureInitialized();
     try {
@@ -196,7 +196,7 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Reload preferences from disk
+  
   static Future<void> reload() async {
     _ensureInitialized();
     try {
@@ -207,13 +207,13 @@ class SharedPrefsHelper {
     }
   }
 
-  // ==================== SECURE STORAGE ====================
+  
 
-  /// Save sensitive data to secure storage with type preservation
-  ///
-  /// Supports String, int, bool, double, and List<-String-> types.
-  /// All data is encrypted before storage.
-  /// Use this for sensitive data like tokens, passwords, API keys, etc.
+  
+  
+  
+  
+  
   static Future<void> saveSecureData({
     required String key,
     required dynamic value,
@@ -250,9 +250,9 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Get data from secure storage
-  ///
-  /// Returns the value in its original type, or null if not found.
+  
+  
+  
   static Future<dynamic> getSecureData({required String key}) async {
     _ensureInitialized();
 
@@ -286,31 +286,31 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Get string value from secure storage
+  
   static Future<String?> getSecureString({required String key}) async {
     final data = await getSecureData(key: key);
     return data is String ? data : null;
   }
 
-  /// Get integer value from secure storage
+  
   static Future<int?> getSecureInt({required String key}) async {
     final data = await getSecureData(key: key);
     return data is int ? data : null;
   }
 
-  /// Get boolean value from secure storage
+  
   static Future<bool?> getSecureBool({required String key}) async {
     final data = await getSecureData(key: key);
     return data is bool ? data : null;
   }
 
-  /// Get double value from secure storage
+  
   static Future<double?> getSecureDouble({required String key}) async {
     final data = await getSecureData(key: key);
     return data is double ? data : null;
   }
 
-  /// Get string list value from secure storage
+  
   static Future<List<String>?> getSecureStringList({
     required String key,
   }) async {
@@ -318,7 +318,7 @@ class SharedPrefsHelper {
     return data is List<String> ? data : null;
   }
 
-  /// Check if a key exists in secure storage
+  
   static Future<bool> containsSecureKey({required String key}) async {
     _ensureInitialized();
     try {
@@ -329,7 +329,7 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Get all keys from secure storage
+  
   static Future<Set<String>> getAllSecureKeys() async {
     _ensureInitialized();
     try {
@@ -340,7 +340,7 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Remove a specific key from secure storage
+  
   static Future<void> removeSecureData({required String key}) async {
     _ensureInitialized();
     try {
@@ -354,7 +354,7 @@ class SharedPrefsHelper {
     }
   }
 
-  /// Clear all secure storage data
+  
   static Future<void> clearAllSecureData() async {
     _ensureInitialized();
     try {
@@ -366,9 +366,9 @@ class SharedPrefsHelper {
     }
   }
 
-  // ==================== CONVENIENCE METHODS ====================
+  
 
-  /// Save authentication token securely
+  
   static Future<void> saveAuthToken({
     required String token,
     String key = 'auth_token',
@@ -376,17 +376,17 @@ class SharedPrefsHelper {
     await saveSecureData(key: key, value: token);
   }
 
-  /// Get authentication token
+  
   static Future<String?> getAuthToken({String key = 'auth_token'}) async {
     return await getSecureString(key: key);
   }
 
-  /// Remove authentication token
+  
   static Future<void> removeAuthToken({String key = 'auth_token'}) async {
     await removeSecureData(key: key);
   }
 
-  /// Save user credentials securely
+  
   static Future<void> saveCredentials({
     required String username,
     required String password,
@@ -395,7 +395,7 @@ class SharedPrefsHelper {
     await saveSecureData(key: 'password', value: password);
   }
 
-  /// Get user credentials
+  
   static Future<Map<String, String>?> getCredentials() async {
     final username = await getSecureString(key: 'username');
     final password = await getSecureString(key: 'password');
@@ -406,13 +406,13 @@ class SharedPrefsHelper {
     return null;
   }
 
-  /// Remove user credentials
+  
   static Future<void> removeCredentials() async {
     await removeSecureData(key: 'username');
     await removeSecureData(key: 'password');
   }
 
-  /// Save user session data
+  
   static Future<void> saveUserSession({
     required String userId,
     required String sessionToken,
@@ -423,7 +423,7 @@ class SharedPrefsHelper {
     await saveData(key: 'remember_me', value: rememberMe);
   }
 
-  /// Get user session data
+  
   static Future<Map<String, dynamic>?> getUserSession() async {
     final userId = await getSecureString(key: 'user_id');
     final sessionToken = await getSecureString(key: 'session_token');
@@ -439,52 +439,52 @@ class SharedPrefsHelper {
     return null;
   }
 
-  /// Clear user session
+  
   static Future<void> clearUserSession() async {
     await removeSecureData(key: 'user_id');
     await removeSecureData(key: 'session_token');
     await removeData(key: 'remember_me');
   }
 
-  /// Check if user is logged in
+  
   static Future<bool> isUserLoggedIn() async {
     final sessionToken = await getSecureString(key: 'session_token');
     return sessionToken != null && sessionToken.isNotEmpty;
   }
 
-  /// Save app theme preference
+  
   static Future<bool> saveThemeMode(String themeMode) async {
     return await saveData(key: 'theme_mode', value: themeMode);
   }
 
-  /// Get app theme preference
+  
   static String getThemeMode() {
     return getString(key: 'theme_mode') ?? 'system';
   }
 
-  /// Save app language preference
+  
   static Future<bool> saveLanguage(String languageCode) async {
     return await saveData(key: 'language_code', value: languageCode);
   }
 
-  /// Get app language preference
+  
   static String getLanguage() {
     return getString(key: 'language_code') ?? 'en';
   }
 
-  /// Save first launch flag
+  
   static Future<bool> setFirstLaunch(bool isFirstLaunch) async {
     return await saveData(key: 'is_first_launch', value: isFirstLaunch);
   }
 
-  /// Check if this is the first app launch
+  
   static bool isFirstLaunch() {
     return getBool(key: 'is_first_launch') ?? true;
   }
 
-  // ==================== PRIVATE METHODS ====================
+  
 
-  /// Ensure the helper is initialized before use
+  
   static void _ensureInitialized() {
     if (!_isInitialized) {
       throw StateError(

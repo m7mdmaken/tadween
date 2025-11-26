@@ -1,13 +1,13 @@
-// dart format width=80
 
-/// GENERATED CODE - DO NOT MODIFY BY HAND
-/// *****************************************************
-///  FlutterGen
-/// *****************************************************
 
-// coverage:ignore-file
-// ignore_for_file: type=lint
-// ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
+
+
+
+
+
+
+
+
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -17,37 +17,37 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsImgsGen {
   const $AssetsImgsGen();
 
-  /// File path: assets/imgs/1logo.png
+  
   AssetGenImage get a1logo => const AssetGenImage('assets/imgs/1logo.png');
 
-  /// File path: assets/imgs/2logo.png
+  
   AssetGenImage get a2logo => const AssetGenImage('assets/imgs/2logo.png');
 
-  /// File path: assets/imgs/branding.png
+  
   AssetGenImage get branding => const AssetGenImage('assets/imgs/branding.png');
 
-  /// File path: assets/imgs/logo.png
+  
   AssetGenImage get logo => const AssetGenImage('assets/imgs/logo.png');
 
-  /// List of all assets
+  
   List<AssetGenImage> get values => [a1logo, a2logo, branding, logo];
 }
 
 class $AssetsSvgsGen {
   const $AssetsSvgsGen();
 
-  /// File path: assets/svgs/logo.svg
+  
   SvgGenImage get logo => const SvgGenImage('assets/svgs/logo.svg');
 
-  /// File path: assets/svgs/onboarding1.svg
+  
   SvgGenImage get onboarding1 =>
       const SvgGenImage('assets/svgs/onboarding1.svg');
 
-  /// File path: assets/svgs/onboarding2.svg
+  
   SvgGenImage get onboarding2 =>
       const SvgGenImage('assets/svgs/onboarding2.svg');
 
-  /// List of all assets
+  
   List<SvgGenImage> get values => [logo, onboarding1, onboarding2];
 }
 
